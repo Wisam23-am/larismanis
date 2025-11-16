@@ -23,6 +23,8 @@ export const StoreCard: React.FC<StoreCardProps> = ({ store, index }) => {
         <img
           src={store.image}
           alt={store.name}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
 

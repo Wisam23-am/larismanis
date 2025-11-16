@@ -77,12 +77,13 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 py-3">
+    <header className="fixed top-0 left-0 right-0 z-50 py-3" role="banner">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link
             to="/"
             className="navbar-brand group"
+            aria-label="Laris Manis - kembali ke beranda"
           >
             <div className="flex items-center space-x-2 whitespace-nowrap">
               <Sparkles className="w-6 h-6" />
@@ -91,7 +92,7 @@ export const Navbar: React.FC = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-2">
+          <nav aria-label="Navigasi utama" className="hidden md:flex items-center space-x-2">
 
             {isAuthenticated && isBuyer && (
               <>
@@ -174,7 +175,7 @@ export const Navbar: React.FC = () => {
                 </Link>
               </div>
             )}
-          </div>
+          </nav>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-3">
@@ -194,6 +195,9 @@ export const Navbar: React.FC = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-all"
+              aria-controls="mobile-menu"
+              aria-expanded={isOpen}
+              aria-label={isOpen ? "Tutup menu" : "Buka menu"}
             >
               {isOpen ? (
                 <X size={24} />
@@ -206,7 +210,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 mt-2 mx-4 bg-white border border-gray-200 rounded-2xl shadow-2xl overflow-hidden animate-scale-in">
+          <div id="mobile-menu" className="md:hidden absolute top-full left-0 right-0 mt-2 mx-4 bg-white border border-gray-200 rounded-2xl shadow-2xl overflow-hidden animate-scale-in">
             <div className="p-4 space-y-2">
               <MobileNavLink
                 to="/"

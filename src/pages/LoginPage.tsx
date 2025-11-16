@@ -63,8 +63,8 @@ const LoginPage: React.FC = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mb-4">
             <LogIn className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Selamat Datang</h1>
-          <p className="text-gray-600">Login ke akun UMKM Marketplace</p>
+          <h1 className="text-3xl font-bold text-black mb-2">Selamat Datang</h1>
+          <p className="text-black">Login ke akun UMKM Marketplace</p>
         </div>
 
         {/* Login Form */}
@@ -72,7 +72,7 @@ const LoginPage: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Role Selection */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="block text-sm font-medium text-black mb-3">
                 Login Sebagai
               </label>
               <div className="grid grid-cols-2 gap-3">
@@ -87,12 +87,12 @@ const LoginPage: React.FC = () => {
                 >
                   <ShoppingBag
                     className={`w-8 h-8 mb-2 ${
-                      selectedRole === "buyer" ? "text-blue-600" : "text-gray-400"
+                      selectedRole === "buyer" ? "text-blue-600" : "text-black"
                     }`}
                   />
                   <span
                     className={`font-semibold ${
-                      selectedRole === "buyer" ? "text-blue-600" : "text-gray-600"
+                      selectedRole === "buyer" ? "text-blue-600" : "text-black"
                     }`}
                   >
                     Pembeli
@@ -110,12 +110,12 @@ const LoginPage: React.FC = () => {
                 >
                   <Store
                     className={`w-8 h-8 mb-2 ${
-                      selectedRole === "seller" ? "text-green-600" : "text-gray-400"
+                      selectedRole === "seller" ? "text-green-600" : "text-black"
                     }`}
                   />
                   <span
                     className={`font-semibold ${
-                      selectedRole === "seller" ? "text-green-600" : "text-gray-600"
+                      selectedRole === "seller" ? "text-green-600" : "text-black"
                     }`}
                   >
                     Penjual
@@ -126,12 +126,12 @@ const LoginPage: React.FC = () => {
 
             {/* Email Input */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-black mb-2">
                 Email
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400" />
+                  <Mail className="h-5 w-5 text-black" />
                 </div>
                 <input
                   type="email"
@@ -139,7 +139,7 @@ const LoginPage: React.FC = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-black text-black"
                   placeholder="nama@email.com"
                   required
                 />
@@ -148,12 +148,12 @@ const LoginPage: React.FC = () => {
 
             {/* Password Input */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-black mb-2">
                 Password
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400" />
+                  <Lock className="h-5 w-5 text-black" />
                 </div>
                 <input
                   type="password"
@@ -161,7 +161,7 @@ const LoginPage: React.FC = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-black text-black"
                   placeholder="Masukkan password"
                   required
                 />
@@ -179,7 +179,7 @@ const LoginPage: React.FC = () => {
 
           {/* Register Link */}
           <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-black">
               Belum punya akun?{" "}
               <Link to="/register" className="text-blue-600 hover:text-blue-700 font-semibold">
                 Daftar di sini
@@ -190,7 +190,7 @@ const LoginPage: React.FC = () => {
 
         {/* Back to Home */}
         <div className="mt-6 text-center">
-          <Link to="/" className="text-sm text-gray-600 hover:text-gray-900">
+          <Link to="/" className="text-sm text-black hover:text-gray-900">
             ← Kembali ke Beranda
           </Link>
         </div>

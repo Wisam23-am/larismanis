@@ -53,6 +53,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <img
           src={product.image || "/placeholder.svg"}
           alt={product.name}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
 
@@ -76,6 +78,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <button
           onClick={handleToggleFavorite}
           className="absolute top-3 right-3 p-3 glass rounded-2xl hover-glow transition-all duration-300 transform hover:scale-110"
+          aria-pressed={favorite}
+          aria-label={favorite ? "Hapus dari favorit" : "Tambah ke favorit"}
         >
           <Heart
             className={`w-5 h-5 transition-all duration-300 ${favorite
@@ -166,6 +170,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             onClick={openWhatsApp}
             disabled={isProcessing}
             className="flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-xl hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+            aria-busy={isProcessing}
+            aria-label={`Hubungi penjual ${product.storeName} via WhatsApp untuk ${product.name}`}
           >
             <Phone className="w-4 h-4" />
             <span className="text-sm">WhatsApp</span>
@@ -174,6 +180,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <Link
             to={`/maps?storeId=${encodeURIComponent(product.storeId)}`}
             className="flex items-center justify-center gap-2 py-3 glass font-semibold rounded-xl hover-glow hover:-translate-y-1 transition-all duration-300"
+            aria-label={`Lihat lokasi toko ${product.storeName} pada peta`}
           >
             <MapPin className="w-4 h-4 text-blue-600" />
             <span className="text-sm text-slate-700">Lokasi</span>

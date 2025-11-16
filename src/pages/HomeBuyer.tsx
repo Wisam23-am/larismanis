@@ -5,6 +5,7 @@ import { Carousel } from "../components/Carousel";
 import { ProductCard } from "../components/ProductCard";
 import { StoreCard } from "../components/StoreCard";
 import { categories, products as dummyProducts, advertisementBanners, stores } from "../data/dummy";
+import { BuyerChatBot } from "../components/BuyerChatBot";
 import type { Product, Store } from "../types";
 
 export const HomeBuyer: React.FC = () => {
@@ -81,6 +82,30 @@ export const HomeBuyer: React.FC = () => {
       {/* Carousel Section */}
       <section className="relative py-8 px-4 md:px-8 lg:px-12 max-w-7xl mx-auto">
         <Carousel items={advertisementBanners} />
+      </section>
+
+      {/* Chatbot CTA above Search */}
+      <section className="relative px-4 md:px-8 lg:px-12 max-w-7xl mx-auto">
+        <div className="mb-4 rounded-2xl border border-blue-200 bg-gradient-to-r from-blue-50 to-purple-50 p-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="relative inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+              <span className="text-sm font-extrabold">LM</span>
+              <span className="absolute -top-1 -right-1 text-yellow-300 text-xs">✦</span>
+            </div>
+            <div>
+              <p className="font-extrabold text-slate-900">Tanyakan AI Laris Manis</p>
+              <p className="text-sm text-slate-700">Butuh rekomendasi cepat? Tanyakan harga, kalori, atau produk spesifik.</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => window.dispatchEvent(new Event("open-buyer-chatbot"))}
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 px-4 py-2 text-white font-semibold shadow hover:opacity-90"
+            >
+              Buka Chat
+            </button>
+          </div>
+        </div>
       </section>
 
       {/* Search & Maps Section */}
@@ -286,6 +311,12 @@ export const HomeBuyer: React.FC = () => {
           )}
         </div>
       </section>
+      {/* Chatbot floating widget */}
+      <BuyerChatBot products={allProducts} />
     </main>
   );
 };
+
+// Render chatbot floating widget
+// Placed after main to avoid layout shifts; fixed position handles placement
+export default HomeBuyer;

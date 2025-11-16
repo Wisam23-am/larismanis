@@ -86,21 +86,18 @@ export const Carousel: React.FC<CarouselProps> = ({ items }) => {
                       }`}
                   />
 
-                  {/* Gradient Overlay with Animation */}
-                  <div className={`absolute inset-0 bg-gradient-to-r ${item.color} opacity-60 mix-blend-multiply transition-opacity duration-700`}></div>
+                  {/* Subtle Gradient Overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-r ${item.color} opacity-30 mix-blend-multiply transition-opacity duration-700`}></div>
 
                   {/* Radial Glow Effect */}
                   <div className="absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/30"></div>
                 </div>
 
-                {/* Content with Slide Animation */}
-                <div className={`absolute inset-0 flex flex-col justify-center items-start p-8 md:p-16 lg:p-24 transition-all duration-700 ${isActive ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
+                {/* Content with Slide Animation (centered with white promo background) */}
+                <div className={`absolute inset-0 flex flex-col justify-center items-center text-center p-8 md:p-16 lg:p-24 transition-all duration-700 ${isActive ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
                   }`}>
-                  {/* Glowing Background Card */}
-                  <div className="glass rounded-3xl p-8 md:p-10 max-w-2xl transform hover:scale-105 transition-transform duration-300">
-                    {/* Animated Border */}
-                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500"></div>
-
+                  {/* White Promo Background */}
+                  <div className="bg-white/85 backdrop-blur-sm border border-slate-200 shadow-xl rounded-3xl p-8 md:p-10 max-w-3xl">
                     <div className="relative z-10">
                       {/* Title with Gradient Text */}
                       <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-4 animate-slide-up">
@@ -108,12 +105,12 @@ export const Carousel: React.FC<CarouselProps> = ({ items }) => {
                       </h2>
 
                       {/* Subtitle with Fade In */}
-                      <p className="text-xl md:text-3xl font-semibold text-slate-700 animate-slide-up" style={{ animationDelay: "0.2s" }}>
+                      <p className="text-lg md:text-2xl font-semibold text-slate-700 animate-slide-up" style={{ animationDelay: "0.2s" }}>
                         {item.subtitle}
                       </p>
 
                       {/* Decorative Line */}
-                      <div className="mt-6 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full animate-slide-up" style={{ animationDelay: "0.4s" }}></div>
+                      <div className="mt-6 mx-auto w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full animate-slide-up" style={{ animationDelay: "0.4s" }}></div>
                     </div>
                   </div>
                 </div>

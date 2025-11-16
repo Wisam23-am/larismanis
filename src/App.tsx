@@ -1,17 +1,20 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import React, { Suspense, lazy } from "react";
 import { AuthProvider } from "./contexts/AuthContext";
 import { CartProvider } from "./contexts/CartContext";
 import { Navbar } from "./components/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { RoleProtectedRoute } from "./components/RoleProtectedRoute";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import { HomeBuyer } from "./pages/HomeBuyer";
-import { ProductDetail } from "./pages/ProductDetail";
-import { StoreDetail } from "./pages/StoreDetail";
-import { DashboardSeller } from "./pages/DashboardSeller";
-import { Maps } from "./pages/Maps";
-import { Favorites } from "./pages/Favorites";
+import { LandingPage } from "./pages/LandingPage";
+const RefineApp = React.lazy(() => import("./admin/RefineApp").then(m => ({ default: m.RefineApp })));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage"));
+const HomeBuyer = lazy(() => import("./pages/HomeBuyer").then(m => ({ default: m.HomeBuyer })));
+const ProductDetail = lazy(() => import("./pages/ProductDetail").then(m => ({ default: m.ProductDetail })));
+const StoreDetail = lazy(() => import("./pages/StoreDetail").then(m => ({ default: m.StoreDetail })));
+const DashboardSeller = lazy(() => import("./pages/DashboardSeller").then(m => ({ default: m.DashboardSeller })));
+const Maps = lazy(() => import("./pages/Maps").then(m => ({ default: m.Maps })));
+const Favorites = lazy(() => import("./pages/Favorites").then(m => ({ default: m.Favorites })));
 import { useAuth } from "./contexts/AuthContext";
 import { initializeDummyAccounts } from "./data/dummyAccounts";
 // Orders removed
@@ -27,8 +30,8 @@ function App() {
       if (isBuyer) return <Navigate to="/home" replace />;
       if (isSeller) return <Navigate to="/dashboard-seller" replace />;
     }
-    // Default root shows HomeBuyer content
-    return <HomeBuyer />;
+    // Default root shows LandingPage
+    return <LandingPage />;
   };
 
   return (
@@ -36,7 +39,8 @@ function App() {
       <CartProvider>
         <Router>
           <Navbar />
-          <main className="pt-20">
+          <main id="main-content" className="pt-20" role="main" aria-live="polite">
+            <Suspense fallback={<div className="p-8 text-center text-neutral-700">Memuat...</div>}>
             <Routes>
           {/* Root: show HomeBuyer when not logged-in; redirect when logged-in */}
           <Route path="/" element={<Root />} />
@@ -104,7 +108,10 @@ function App() {
           />
           {/* Cart route removed - ordering via WhatsApp */}
           {/* Orders route removed */}
+          {/* Admin (Refine) */}
+          <Route path="/admin/*" element={<RefineApp />} />
             </Routes>
+            </Suspense>
           </main>
         </Router>
       </CartProvider>

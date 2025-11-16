@@ -61,7 +61,7 @@ const RegisterPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4 py-12">
-      <div className="max-w-md w-full">
+      <div className="max-w-5xl w-full">
         {step === "role" ? (
           // Role Selection Screen
           <>
@@ -74,62 +74,115 @@ const RegisterPage: React.FC = () => {
               <p className="text-gray-600">Daftar sebagai pembeli atau penjual?</p>
             </div>
 
-            {/* Role Selection Cards */}
-            <div className="bg-white rounded-2xl shadow-xl p-8 space-y-4">
+            {/* Role Selection Cards - Kanan Kiri */}
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              {/* Pembeli Card */}
               <button
                 onClick={() => setSelectedRole("buyer")}
-                className={`w-full p-6 border-2 rounded-xl transition-all transform hover:scale-105 ${
+                className={`group relative p-8 border-3 rounded-2xl transition-all transform hover:scale-105 bg-white ${
                   selectedRole === "buyer"
-                    ? "border-blue-600 bg-blue-50 shadow-lg"
-                    : "border-gray-300 hover:border-blue-300"
+                    ? "border-blue-600 shadow-2xl ring-4 ring-blue-200"
+                    : "border-gray-300 hover:border-blue-300 shadow-lg hover:shadow-xl"
                 }`}
               >
                 <div className="text-center">
-                  <div className="text-5xl mb-3">🛒</div>
-                  <div className="text-xl font-bold text-gray-900 mb-2">Pembeli</div>
-                  <div className="text-sm text-gray-600">
+                  <div className={`text-7xl mb-4 transform transition-transform ${
+                    selectedRole === "buyer" ? "scale-110" : "group-hover:scale-110"
+                  }`}>
+                    🛒
+                  </div>
+                  <div className="text-2xl font-bold text-gray-900 mb-3">Pembeli</div>
+                  <div className="text-sm text-gray-600 mb-4">
                     Belanja produk UMKM lokal berkualitas
                   </div>
-                  <div className="mt-3 text-xs text-gray-500">
-                    ✓ Akses katalog produk<br/>
-                    ✓ Lihat peta toko<br/>
-                    ✓ Simpan favorit
+                  <div className="space-y-2 text-sm text-left bg-blue-50 rounded-lg p-4">
+                    <div className="flex items-center gap-2 text-gray-700">
+                      <span className="text-blue-600 font-bold">✓</span>
+                      Akses katalog produk lengkap
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-700">
+                      <span className="text-blue-600 font-bold">✓</span>
+                      Lihat peta toko interaktif
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-700">
+                      <span className="text-blue-600 font-bold">✓</span>
+                      Simpan produk favorit
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-700">
+                      <span className="text-blue-600 font-bold">✓</span>
+                      Hubungi penjual via WhatsApp
+                    </div>
                   </div>
                 </div>
+                {selectedRole === "buyer" && (
+                  <div className="absolute -top-3 -right-3 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-white text-2xl">✓</span>
+                  </div>
+                )}
               </button>
 
+              {/* Penjual Card */}
               <button
                 onClick={() => setSelectedRole("seller")}
-                className={`w-full p-6 border-2 rounded-xl transition-all transform hover:scale-105 ${
+                className={`group relative p-8 border-3 rounded-2xl transition-all transform hover:scale-105 bg-white ${
                   selectedRole === "seller"
-                    ? "border-green-600 bg-green-50 shadow-lg"
-                    : "border-gray-300 hover:border-green-300"
+                    ? "border-green-600 shadow-2xl ring-4 ring-green-200"
+                    : "border-gray-300 hover:border-green-300 shadow-lg hover:shadow-xl"
                 }`}
               >
                 <div className="text-center">
-                  <div className="text-5xl mb-3">🏪</div>
-                  <div className="text-xl font-bold text-gray-900 mb-2">Penjual</div>
-                  <div className="text-sm text-gray-600">
+                  <div className={`text-7xl mb-4 transform transition-transform ${
+                    selectedRole === "seller" ? "scale-110" : "group-hover:scale-110"
+                  }`}>
+                    🏪
+                  </div>
+                  <div className="text-2xl font-bold text-gray-900 mb-3">Penjual</div>
+                  <div className="text-sm text-gray-600 mb-4">
                     Jual produk UMKM Anda secara online
                   </div>
-                  <div className="mt-3 text-xs text-gray-500">
-                    ✓ Dashboard penjual<br/>
-                    ✓ Kelola produk<br/>
-                    ✓ Kelola toko
+                  <div className="space-y-2 text-sm text-left bg-green-50 rounded-lg p-4">
+                    <div className="flex items-center gap-2 text-gray-700">
+                      <span className="text-green-600 font-bold">✓</span>
+                      Dashboard penjual lengkap
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-700">
+                      <span className="text-green-600 font-bold">✓</span>
+                      Kelola produk dengan mudah
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-700">
+                      <span className="text-green-600 font-bold">✓</span>
+                      Atur informasi toko
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-700">
+                      <span className="text-green-600 font-bold">✓</span>
+                      Jangkau lebih banyak pembeli
+                    </div>
                   </div>
                 </div>
+                {selectedRole === "seller" && (
+                  <div className="absolute -top-3 -right-3 w-12 h-12 bg-green-600 rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-white text-2xl">✓</span>
+                  </div>
+                )}
               </button>
+            </div>
 
+            {/* Continue Button */}
+            <div className="max-w-md mx-auto">
               <button
                 onClick={() => setStep("form")}
-                className="w-full mt-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+                className={`w-full py-4 rounded-xl font-bold text-white text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 ${
+                  selectedRole === "buyer"
+                    ? "bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700"
+                    : "bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+                }`}
               >
-                Lanjutkan sebagai {selectedRole === "buyer" ? "Pembeli" : "Penjual"}
+                Lanjutkan sebagai {selectedRole === "buyer" ? "Pembeli" : "Penjual"} →
               </button>
             </div>
 
             {/* Back to Home */}
-            <div className="mt-6 text-center space-y-2">
+            <div className="mt-8 text-center space-y-2">
               <p className="text-sm text-gray-600">
                 Sudah punya akun?{" "}
                 <Link to="/login" className="text-blue-600 hover:text-blue-700 font-semibold">
@@ -143,7 +196,7 @@ const RegisterPage: React.FC = () => {
           </>
         ) : (
           // Registration Form
-          <>
+          <div className="max-w-md mx-auto">
             {/* Logo/Header */}
             <div className="text-center mb-8">
               <button
@@ -304,7 +357,7 @@ const RegisterPage: React.FC = () => {
                 ← Kembali ke Beranda
               </Link>
             </div>
-          </>
+          </div>
         )}
       </div>
     </div>
