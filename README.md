@@ -94,7 +94,3 @@ Lihat `BACKEND_GUIDE.md` untuk panduan detail mengenai implementasi:
 * Daftar API Endpoints yang Perlu Dibuat (Auth, CRUD, Reviews)
 
 ***
-
-## 📄 Lisensi
-
-Proyek ini berada di bawah [Apache License 2.0].
