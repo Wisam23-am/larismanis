@@ -10,25 +10,25 @@ Laris Manis adalah sebuah proyek marketplace React/TypeScript yang dirancang unt
 
 Aplikasi ini menggunakan sistem *Role-Based Authentication* (Pembeli & Penjual) dan didukung oleh fitur-fitur modern:
 
-| Role | Fitur | Deskripsi | Sumber Informasi |
-| :--- | :--- | :--- | :--- |
-| **Pembeli** | **Peta Interaktif Toko** | Navigasi dan temukan toko UMKM terdekat menggunakan Leaflet dan OpenStreetMap. Tanpa perlu API Key berbayar! | |
+| Role | Fitur | Deskripsi |
+| :--- | :--- | :--- |
+| **Pembeli** | **Peta Interaktif Toko** | Navigasi dan temukan toko UMKM terdekat menggunakan Leaflet dan OpenStreetMap. Tanpa perlu API Key berbayar! | 
 
 ![Peta Interaktif Lokasi Toko UMKM](./public/Screenshot%202025-11-17%20144822.png)
 
-| Role | Fitur | Deskripsi | Sumber Informasi |
-| :--- | :--- | :--- | :--- |
-| **Pembeli** | **AI Chatbot (Gemini)** | Mendapatkan rekomendasi produk, mencari berdasarkan harga/kalori, atau mencari produk promo melalui asisten AI. | |
-| **Pembeli** | **Jelajah Produk & Toko** | Filter produk berdasarkan kategori dan pencarian. Lacak pesanan (COD - Ambil di Toko) dan daftar produk favorit. | |
+| Role | Fitur | Deskripsi |
+| :--- | :--- | :--- |
+| **Pembeli** | **AI Chatbot (Gemini)** | Mendapatkan rekomendasi produk, mencari berdasarkan harga/kalori, atau mencari produk promo melalui asisten AI. | 
+| **Pembeli** | **Jelajah Produk & Toko** | Filter produk berdasarkan kategori dan pencarian. Lacak pesanan (COD - Ambil di Toko) dan daftar produk favorit. | 
 
 ![Tampilan Halaman Pembeli dengan Produk Unggulan](./public/Screenshot%202025-11-17%20144924.png)
 
-| Role | Fitur | Deskripsi | Sumber Informasi |
-| :--- | :--- | :--- | :--- |
-| **Penjual** | **Dashboard Penjual** | Mengelola informasi toko dan produk secara mandiri. | |
-| **Penjual** | **Manajemen Produk (CRUD)** | Tambah, Edit, dan Hapus produk. Fitur diskon otomatis dan manajemen stok. | |
-| **Sistem** | **Role-Based Auth** | Memisahkan jalur akses antara Pembeli (`/home`) dan Penjual (`/dashboard-seller`) dengan perlindungan rute. | |
-| **Sistem** | **UI/UX Modern** | Menggunakan tema futuristik dan *glassmorphism* yang dibangun di atas Tailwind CSS. | |
+| Role | Fitur | Deskripsi | 
+| :--- | :--- | :--- | 
+| **Penjual** | **Dashboard Penjual** | Mengelola informasi toko dan produk secara mandiri. | 
+| **Penjual** | **Manajemen Produk (CRUD)** | Tambah, Edit, dan Hapus produk. Fitur diskon otomatis dan manajemen stok. | 
+| **Sistem** | **Role-Based Auth** | Memisahkan jalur akses antara Pembeli (`/home`) dan Penjual (`/dashboard-seller`) dengan perlindungan rute. | 
+| **Sistem** | **UI/UX Modern** | Menggunakan tema futuristik dan *glassmorphism* yang dibangun di atas Tailwind CSS. | 
 
 ***
 
