@@ -16,12 +16,14 @@ Aplikasi ini menggunakan sistem *Role-Based Authentication* (Pembeli & Penjual) 
 
 ![Peta Interaktif Lokasi Toko UMKM](./public/Screenshot%202025-11-17%20144822.png)
 
+| Role | Fitur | Deskripsi | Sumber Informasi |
 | :--- | :--- | :--- | :--- |
 | **Pembeli** | **AI Chatbot (Gemini)** | Mendapatkan rekomendasi produk, mencari berdasarkan harga/kalori, atau mencari produk promo melalui asisten AI. | |
 | **Pembeli** | **Jelajah Produk & Toko** | Filter produk berdasarkan kategori dan pencarian. Lacak pesanan (COD - Ambil di Toko) dan daftar produk favorit. | |
 
 ![Tampilan Halaman Pembeli dengan Produk Unggulan](./public/Screenshot%202025-11-17%20144924.png)
 
+| Role | Fitur | Deskripsi | Sumber Informasi |
 | :--- | :--- | :--- | :--- |
 | **Penjual** | **Dashboard Penjual** | Mengelola informasi toko dan produk secara mandiri. | |
 | **Penjual** | **Manajemen Produk (CRUD)** | Tambah, Edit, dan Hapus produk. Fitur diskon otomatis dan manajemen stok. | |
