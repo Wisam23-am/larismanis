@@ -1,156 +1,74 @@
-# Google Maps JavaScript API React Wrapper
+# 🇮🇩 Laris Manis - UMKM Marketplace
 
-[![npm](https://img.shields.io/npm/v/@googlemaps/react-wrapper)](https://www.npmjs.com/package/@googlemaps/react-wrapper)
-![Build](https://github.com/googlemaps/react-wrapper/workflows/Test/badge.svg)
-![Release](https://github.com/googlemaps/react-wrapper/workflows/Release/badge.svg)
-[![codecov](https://codecov.io/gh/googlemaps/react-wrapper/branch/master/graph/badge.svg)](https://codecov.io/gh/googlemaps/react-wrapper)
-![GitHub contributors](https://img.shields.io/github/contributors/googlemaps/react-wrapper?color=green)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[![](https://github.com/jpoehnelt/in-solidarity-bot/raw/main/static//badge-flat-square.png)](https://github.com/apps/in-solidarity)
+**"Platform digital yang menghubungkan Anda dengan produk berkualitas dari UMKM lokal Indonesia. Belanja mudah, dukung ekonomi lokal, tingkatkan kesejahteraan bersama!"**
 
-> [!IMPORTANT]  
-> This library has been archived.
-> We recommend all users of this package to switch to the new
-> [`@vis.gl/react-google-maps`](https://www.npmjs.com/package/@vis.gl/react-google-maps),
-> which provides a collection of components and hooks and can be configured
-> to be fully compatible with this package.
-> 
-> See [the migration guide](https://visgl.github.io/react-google-maps/docs/guides/migrating-from-react-wrapper)
-> for more details on how to switch from this package to `@vis.gl/react-google-maps`.
+Laris Manis adalah sebuah proyek marketplace React/TypeScript yang dirancang untuk mendukung Usaha Mikro, Kecil, dan Menengah (UMKM). Proyek ini berfokus pada pengalaman pengguna yang cepat, desain modern berbasis Tailwind CSS, dan fitur-fitur penting seperti peta interaktif toko dan manajemen produk bagi penjual.
 
-## Description
+## 🚀 Fitur Utama
 
-Wrap React components with this library to load the Google Maps JavaScript API.
+Aplikasi ini menggunakan sistem *Role-Based Authentication* (Pembeli & Penjual) dan didukung oleh fitur-fitur modern:
 
-```jsx
-import {Wrapper} from '@googlemaps/react-wrapper';
+| Role | Fitur | Deskripsi | Sumber Informasi |
+| :--- | :--- | :--- | :--- |
+| **Pembeli** | **Peta Interaktif Toko** | Navigasi dan temukan toko UMKM terdekat menggunakan Leaflet dan OpenStreetMap. Tanpa perlu API Key berbayar! | |
+| **Pembeli** | **AI Chatbot (Gemini)** | Mendapatkan rekomendasi produk, mencari berdasarkan harga/kalori, atau mencari produk promo melalui asisten AI. | |
+| **Pembeli** | **Jelajah Produk & Toko** | Filter produk berdasarkan kategori dan pencarian. Lacak pesanan (COD - Ambil di Toko) dan daftar produk favorit. | |
+| **Penjual** | **Dashboard Penjual** | Mengelola informasi toko dan produk secara mandiri. | |
+| **Penjual** | **Manajemen Produk (CRUD)** | Tambah, Edit, dan Hapus produk. Fitur diskon otomatis dan manajemen stok. | |
+| **Sistem** | **Role-Based Auth** | Memisahkan jalur akses antara Pembeli (`/home`) dan Penjual (`/dashboard-seller`) dengan perlindungan rute. | |
+| **Sistem** | **UI/UX Modern** | Menggunakan tema futuristik dan *glassmorphism* yang dibangun di atas Tailwind CSS. | |
 
-const MyApp = () => (
-  <Wrapper apiKey={'YOUR_API_KEY'}>
-    <MyMapComponent />
-  </Wrapper>
-);
-```
+## ⚙️ Teknologi & Dependencies
 
-The preceding example will not render any elements unless the Google Maps JavaScript API is successfully loaded. To handle error cases and the time until load is complete, it is recommended to provide render props.
+Proyek ini dibangun menggunakan stack modern:
 
-```jsx
-import {Wrapper, Status} from '@googlemaps/react-wrapper';
+| Kategori | Teknologi | Catatan |
+| :--- | :--- | :--- |
+| **Frontend** | `React` & `TypeScript` | Dikembangkan dengan `Vite` |
+| **Styling** | `Tailwind CSS` & `PostCSS` | Menggunakan konfigurasi kustom untuk tema futuristik. |
+| **Mapping** | `Leaflet` & `react-leaflet` | Migrasi dari Google Maps untuk fitur peta yang **gratis** dan *open-source*. |
+| **State/Context** | `useAuth`, `useCart` (React Context) | Digunakan untuk manajemen sesi pengguna dan keranjang/favorit/order (lokal). |
+| **API/Backend** | `Node.js` + `Express` (Hanya untuk Chatbot) | Endpoint `/api/chat` menggunakan Google GenAI SDK untuk fungsi chatbot. |
+| **Database (Mock)** | `localStorage` | Data dummy dan perubahan dari Penjual disimpan sementara di Local Storage untuk persistence lokal. |
 
-const render = status => {
-  switch (status) {
-    case Status.LOADING:
-      return <Spinner />;
-    case Status.FAILURE:
-      return <ErrorComponent />;
-    case Status.SUCCESS:
-      return <MyMapComponent />;
-  }
-};
+## 🖥️ Instalasi & Setup
 
-const MyApp = () => <Wrapper apiKey={'YOUR_API_KEY'} render={render} />;
-```
+Pastikan Anda memiliki Node.js (disarankan versi 18+) dan npm/yarn terinstal.
 
-When combining children and render props, the children will render on success and the render prop will be executed for other status values.
+1.  **Clone Repository:**
+    ```bash
+    git clone [repository_url]
+    cd larismanismia
+    ```
 
-```tsx
-import {Wrapper, Status} from '@googlemaps/react-wrapper';
+2.  **Instal Dependensi:**
+    ```bash
+    npm install
+    # atau
+    yarn install
+    ```
 
-const render = (status: Status): ReactElement => {
-  if (status === Status.FAILURE) return <ErrorComponent />;
-  return <Spinner />;
-};
+3.  **Jalankan Aplikasi:**
+    Untuk menjalankan frontend (Vite) dan server backend (Express Chatbot API) secara bersamaan, gunakan *script* `dev:full`:
+    ```bash
+    npm run dev:full
+    ```
+    Aplikasi akan berjalan di `http://localhost:5173/`.
 
-const MyApp = () => (
-  <Wrapper apiKey={'YOUR_API_KEY'} render={render}>
-    <MyMapComponent />
-  </Wrapper>
-);
-```
+## 🔑 Akun Login Cepat untuk Testing
 
-### @googlemaps/js-api-loader
+Semua akun dummy sudah otomatis diinisialisasi ke `localStorage` saat aplikasi dimuat.
 
-This wrapper uses [@googlemaps/js-api-loader][js_api_loader] to load the Google Maps JavaScript API. This library uses a singleton pattern and will not attempt to load the library more than once. All options accepted by [@googlemaps/js-api-loader][js_api_loader] are also accepted as props to the wrapper component.
+| Role | Email | Password | Redirect Setelah Login |
+| :--- | :--- | :--- | :--- |
+| **Pembeli** | `buyer@gmail.com` | `password123` | `/home` |
+| **Penjual** | `faridgamever@gmail.com` (Toko Jumbo Juice SWK) | `password123` | `/dashboard-seller` |
 
-### MyMapComponent
+## 🏗️ Catatan Arsitektur (Backend)
 
-The following snippets demonstrates the usage of `useRef` and `useEffect` hooks with Google Maps.
+Saat ini, data (produk, toko, user) disimpan secara lokal di `localStorage`. Untuk implementasi *production* dengan data yang persisten, disarankan migrasi ke arsitektur backend yang sesungguhnya.
 
-```tsx
-function MyMapComponent({
-  center,
-  zoom,
-}: {
-  center: google.maps.LatLngLiteral;
-  zoom: number;
-}) {
-  const ref = useRef<HTMLDivElement>();
-  const [map, setMap] = useState<google.maps.Map | null>(null);
-
-  useEffect(() => {
-    const map = new google.maps.Map(ref.current, {center, zoom});
-    setMap(map);
-
-    return () => {
-      google.maps.event.clearInstanceListeners(map);
-      setMap(null);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!map) return;
-
-    // do something with the map instance
-  }, [map]);
-
-  return <div ref={ref} id="map" />;
-}
-```
-
-## Examples
-
-See the [examples](https://github.com/googlemaps/react-wrapper/tree/main/examples) folder for additional usage patterns.
-
-- [Basic Demo](https://googlemaps.github.io/react-wrapper/public/basic/)
-
-## Install
-
-Available via npm as the package [@googlemaps/react-wrapper](https://www.npmjs.com/package/@googlemaps/react-wrapper).
-
-```sh
-npm i @googlemaps/react-wrapper
-```
-
-or
-
-```sh
-yarn add @googlemaps/react-wrapper
-```
-
-For TypeScript support additionally install type definitions.
-
-```sh
-npm i -D @types/google.maps
-```
-
-or
-
-```sh
-yarn add -D @types/google.maps
-```
-
-## Documentation
-
-The reference documentation can be found at this [link](https://googlemaps.github.io/react-wrapper/index.html).
-
-## Support
-
-This library is community supported. We're comfortable enough with the stability and features of
-the library that we want you to build real production applications on it.
-
-If you find a bug, or have a feature suggestion, please [log an issue][issues]. If you'd like to
-contribute, please read [How to Contribute][contrib].
-
-[issues]: https://github.com/googlemaps/react-wrapper/issues
-[contrib]: https://github.com/googlemaps/react-wrapper/blob/master/CONTRIBUTING.md
-[js_api_loader]: https://www.npmjs.com/package/@googlemaps/js-api-loader
+Lihat `BACKEND_GUIDE.md` untuk panduan detail mengenai implementasi:
+* Database Schema (Users, Stores, Products, Reviews)
+* Rekomendasi Stack (Node.js + Express + MySQL)
+* Daftar API Endpoints yang Perlu Dibuat (Auth, CRUD, Reviews)
